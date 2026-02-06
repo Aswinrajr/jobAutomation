@@ -14,8 +14,10 @@ dotenv.config();
 // Connect to DB
 connectDB();
 
-// Init Cron Jobs
-initCron();
+// Init Cron Jobs (Only if not in serverless)
+if (process.env.NODE_ENV !== 'production' || process.env.ENABLE_CRON === 'true') {
+    initCron();
+}
 
 const app = express();
 
@@ -47,4 +49,8 @@ app.use((err, req, res, next) => {
 
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+if (process.env.NODE_ENV !== 'production') {
+    app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+}
+
+module.exports = app;
