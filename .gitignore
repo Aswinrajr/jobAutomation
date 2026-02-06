@@ -1,0 +1,29 @@
+# Dependencies
+node_modules/
+client/node_modules/
+server/node_modules/
+
+# Environment Variables
+.env
+server/.env
+
+# Build outputs
+dist/
+client/dist/
+build/
+
+# Uploads and temporary files
+server/uploads/*
+!server/uploads/.gitkeep
+tmp/
+*.log
+npm-debug.log*
+
+# IDE and System files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Misc
+.cache/
